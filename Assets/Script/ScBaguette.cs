@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class ScShoot : MonoBehaviour
-{
+public class ScBaguette : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
