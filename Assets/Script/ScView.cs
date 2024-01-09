@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class ScView : MonoBehaviour{
     [SerializeField] private Transform camView;
+    [SerializeField] private Transform orientation;
     [SerializeField] private float xSensy;
     [SerializeField] private float ySensy;
-    [SerializeField] float zRota;
 
     private float yRota = 0;
     private float xRota = 0;
@@ -22,7 +22,8 @@ public class ScView : MonoBehaviour{
         xRota -= mouseMove.y * Time.deltaTime * ySensy;
         xRota = Mathf.Clamp(xRota, -90, 90);
 
-        camView.rotation = Quaternion.Euler(xRota, yRota, zRota);
+        camView.rotation = Quaternion.Euler(xRota, yRota, 0);
+        orientation.rotation = Quaternion.Euler(0,yRota, 0);
     }
 
 }
