@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 939948897}
   - component: {fileID: 939948896}
   - component: {fileID: 939948895}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,6 +688,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 850252e5-9442-401c-aa54-bba7bc9af76c
     m_ActionName: InGame/Mouv[/Keyboard/z,/Keyboard/w,/Keyboard/s,/Keyboard/q,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1172579050}
+        m_TargetAssemblyTypeName: ScGetInput, Assembly-CSharp
+        m_MethodName: GetJumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 58ab72f1-3ddf-4640-b3c8-9986e486d3bf
+    m_ActionName: InGame/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -732,8 +748,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6da46eeadace34793f864640849326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   orientation: {fileID: 689043232}
+  speed: 5
+  height: 2
+  grounded: 0
+  Ground:
+    serializedVersion: 2
+    m_Bits: 128
+  groundDrag: 0
+  jumpForce: 6
+  readyToJump: 0
+  jumps: 3
 --- !u!1 &1375210563
 GameObject:
   m_ObjectHideFlags: 0
