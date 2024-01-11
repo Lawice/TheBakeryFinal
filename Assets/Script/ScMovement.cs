@@ -14,6 +14,8 @@ public class ScMovement : MonoBehaviour {
     public float height;
     [SerializeField] bool grounded;
     public LayerMask Ground;
+    [SerializeField] bool builded;
+    public LayerMask Buildings;
     [SerializeField] float groundDrag;
 
     [Header("~~~~Jumping~~~~")]
@@ -28,7 +30,9 @@ public class ScMovement : MonoBehaviour {
 
     void Update() {
         grounded = Physics.Raycast(transform.position, Vector3.down, height*0.5f + 0.2f, Ground);
-        if (grounded) { body.drag = groundDrag; nbJump = 3; canJump = true; }
+        builded = Physics.Raycast(transform.position, Vector3.down, height * 0.5f + 0.2f, Buildings);
+        if (grounded) { body.drag = groundDrag; nbJump = 3; canJump = true; jumpForce = 6; }
+        if (builded) { body.drag = groundDrag; nbJump = 2; canJump = true; jumpForce = 5; }
         else { body.drag = 0; }
         SpeedControl();
         if (nbJump <= 1) { canJump = false;}

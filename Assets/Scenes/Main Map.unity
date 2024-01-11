@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b0ba0694e06673542956be38eab26419, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b0ba0694e06673542956be38eab26419, type: 3}
       propertyPath: m_LocalScale.x
@@ -896,6 +896,10 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 128
+  builded: 0
+  Buildings:
+    serializedVersion: 2
+    m_Bits: 512
   groundDrag: 0
   jumpForce: 6
   canJump: 0
@@ -1066,7 +1070,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
