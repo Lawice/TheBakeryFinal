@@ -18,8 +18,8 @@ public class ScMovement : MonoBehaviour {
 
     [Header("~~~~Jumping~~~~")]
     [SerializeField] private float jumpForce;
-    [SerializeField] private bool readyToJump;
-    [SerializeField] private int jumps=3;
+    [SerializeField] private bool canJump;
+    [SerializeField] private int nbJump=3;
     
 
     void Start() {
@@ -28,10 +28,10 @@ public class ScMovement : MonoBehaviour {
 
     void Update() {
         grounded = Physics.Raycast(transform.position, Vector3.down, height*0.5f + 0.2f, Ground);
-        if (grounded) { body.drag = groundDrag; jumps = 3; readyToJump = true; }
+        if (grounded) { body.drag = groundDrag; nbJump = 3; canJump = true; }
         else { body.drag = 0; }
         SpeedControl();
-        if (jumps <= 1) { readyToJump = false;}
+        if (nbJump <= 1) { canJump = false;}
     }
 
     public void Move(Vector2 MoveInput) {
@@ -48,9 +48,8 @@ public class ScMovement : MonoBehaviour {
     }
 
     public void Jump() {
-        print("jump");
-        if (readyToJump) {
-            jumps -= 1;
+        if (canJump) {
+            nbJump -= 1;
             body.velocity = new Vector3(body.velocity.x, 0f, body.velocity.z);
             body.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }

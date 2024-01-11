@@ -6,13 +6,17 @@ using UnityEngine.InputSystem;
 public class ScGetInput : MonoBehaviour{
     private ScView viewScript;
     private ScMovement moveScript;
+    private ScCurrentWeapon currentWeaponScript;
     private PlayerInput playerInput;
     private Vector2 moveDirection;
+    private GameObject weapon;
+
 
     private void Awake(){
         viewScript = GetComponent<ScView>();
         playerInput = GetComponent<PlayerInput>();
         moveScript = GetComponent<ScMovement>();
+        currentWeaponScript = GetComponent<ScCurrentWeapon>();
     }
     private void FixedUpdate(){
         moveScript.Move(moveDirection);
@@ -28,8 +32,17 @@ public class ScGetInput : MonoBehaviour{
     }
 
     public void GetJumpInput(InputAction.CallbackContext ctx) {
-        
         if (ctx.performed) { moveScript.Jump();  }
-        }
+    }
+
+    public void CurrentWeapon(){
+        weapon = currentWeaponScript.ActualWeapon();
+    }
+
+/*    public void GetShootInput(InputAction.CallbackContext ctx) {  
+        if (weapon != null){
+            if (ctx.started) { weapon.GetComponent<>; }
+            if (ctx.canceled) { weapon.StopShoot(); }
+        } }*/
 
 }
