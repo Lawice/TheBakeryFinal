@@ -23,13 +23,15 @@ public class ScWeapon : MonoBehaviour {
     [Header("~~~~ Fix ~~~~")]
     public bool allowInvoke = true;
 
-    [Header("~~~~ Audio ~~~~")]
+    [Header("~~~~ Audio & Animation ~~~~")]
     ScAudioManager audioManager;
+    private Animator animator;
 
 
     void Awake() {
         bulletsLeft = magazineSize;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<ScAudioManager>();
+        animator = GetComponentInParent<Animator>();
     }
 
     public virtual void Statut() {
@@ -42,8 +44,7 @@ public class ScWeapon : MonoBehaviour {
                 else { Reload(); }
                 break;
             case GunStatut.shooting:
-                if (bulletsShot > 0)
-                {
+                if (bulletsShot > 0) {
                     bulletsShot = 0;
                     Shoot();
                 }
@@ -62,7 +63,7 @@ public class ScWeapon : MonoBehaviour {
         Vector3 targetPoint;
         if (Physics.Raycast(shootRay, out shoothit)) { targetPoint = shoothit.point; }
         else{ targetPoint = shootRay.GetPoint(75); }
-
+         
         Vector3 direction = targetPoint - attackPoint.position;
         float xSpread = Random.Range(-spread, spread);
         float ySpread = Random.Range(-spread, spread);
@@ -75,30 +76,31 @@ public class ScWeapon : MonoBehaviour {
         bulletsLeft--;
         bulletsShot++;
 
-        if (allowInvoke) {
+        if (allowInvoke && bulletsLeft > 0) {
             Invoke("ResetShot", shootingTime);
             allowInvoke = false;
         }
 
-        if (bulletsShot <bulletsShooting && bulletsLeft > 0) {
-            Invoke("Shoot", shotsTime);
-        } 
+        if (bulletsShot <bulletsShooting && bulletsLeft > 0) {Invoke("Shoot", shotsTime);}
+        
+        if (bulletsLeft <= 0) { Reload(); }
     }
 
     private void ResetShot() {
         gunStatut = GunStatut.canShoot;
         allowInvoke = true;
-        
     }
 
     public void Reload() {
         gunStatut = GunStatut.relaoding;
+        animator.SetBool("Reloading", true);
         Invoke("Reloaded",reloadTime);
     }
 
     private void Reloaded() {
         bulletsLeft = magazineSize;
         gunStatut = GunStatut.canShoot;
+        animator.SetBool("Reloading", false);
     }
 
 
