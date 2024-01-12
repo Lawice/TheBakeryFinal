@@ -3,27 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScWeapon : MonoBehaviour {
-    [Header("~~~~Bullets~~~~")]
+    [Header("~~~~ Bullets ~~~~")]
     [SerializeField] protected private GameObject bullet;
-    [SerializeField] private float shootForce, upwardForce;
-    [SerializeField] int bulletsLeft, bulletsShot;
+    [SerializeField] protected private float shootForce, upwardForce;
+    [SerializeField] public int bulletsLeft, bulletsShot;
 
-    [Header("~~~~Guns Stats~~~~")]
-    [SerializeField] private float shootingTime, spread, reloadTime, shotsTime;
-    [SerializeField] private int magazineSize, bulletsShooting;
-    [SerializeField] private bool canHold;
+    [Header("~~~~ Guns Stats ~~~~")]
+    [SerializeField] public string gunName;
+    [SerializeField] protected private float shootingTime, spread, reloadTime, shotsTime;
+    [SerializeField] public int magazineSize, bulletsShooting;
+    [SerializeField] protected private bool canHold;
     private enum GunStatut {shooting, canShoot, relaoding};
     [SerializeField] private GunStatut gunStatut = GunStatut.canShoot;
 
-    [Header("~~~~Reference~~~~")]
-    [SerializeField] private Camera FPSCamera;
-    [SerializeField] private Transform attackPoint;
+    [Header("~~~~ Reference ~~~~")]
+    [SerializeField] protected private Camera FPSCamera;
+    [SerializeField] protected private Transform attackPoint;
 
-    [Header("~~~~Fix~~~~")]
+    [Header("~~~~ Fix ~~~~")]
     public bool allowInvoke = true;
+
+    [Header("~~~~ Audio ~~~~")]
+    ScAudioManager audioManager;
+
 
     void Awake() {
         bulletsLeft = magazineSize;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<ScAudioManager>();
     }
 
     public virtual void Statut() {
@@ -47,6 +53,7 @@ public class ScWeapon : MonoBehaviour {
     }
 
     public virtual void Shoot(){
+        audioManager.PlayRandomSFX(audioManager.baguetteShoot);
         gunStatut = GunStatut.shooting;
 
         Ray shootRay = FPSCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
@@ -84,7 +91,7 @@ public class ScWeapon : MonoBehaviour {
         
     }
 
-    private void Reload() {
+    public void Reload() {
         gunStatut = GunStatut.relaoding;
         Invoke("Reloaded",reloadTime);
     }

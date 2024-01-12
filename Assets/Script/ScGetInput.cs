@@ -4,20 +4,25 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ScGetInput : MonoBehaviour{
+
     private ScView viewScript;
     private ScMovement moveScript;
+    [SerializeField] private GameObject weaponHold;
     private ScCurrentWeapon currentWeaponScript;
     private PlayerInput playerInput;
     private Vector2 moveDirection;
-    private GameObject weapon;
+    ScWeapon weapon;
+
+
 
 
     private void Awake(){
         viewScript = GetComponent<ScView>();
         playerInput = GetComponent<PlayerInput>();
         moveScript = GetComponent<ScMovement>();
-        currentWeaponScript = GetComponent<ScCurrentWeapon>();
+        currentWeaponScript = weaponHold.GetComponent<ScCurrentWeapon>();
     }
+
     private void FixedUpdate(){
         moveScript.Move(moveDirection);
     }
@@ -35,14 +40,29 @@ public class ScGetInput : MonoBehaviour{
         if (ctx.performed) { moveScript.Jump();  }
     }
 
-    public void CurrentWeapon(){
-        weapon = currentWeaponScript.ActualWeapon();
+
+    public void GetShootInput(InputAction.CallbackContext ctx){
+        if (ctx.started){
+            ScWeapon weapon = currentWeaponScript.ActualWeapon();
+            if (weapon){
+                weapon.Statut();
+            }
+            else{
+                Debug.Log("No weapon found.");
+            }
+        }
     }
 
-/*    public void GetShootInput(InputAction.CallbackContext ctx) {  
-        if (weapon != null){
-            if (ctx.started) { weapon.GetComponent<>; }
-            if (ctx.canceled) { weapon.StopShoot(); }
-        } }*/
+    public void GetSecondaryShootInput(InputAction.CallbackContext ctx){
+        if (ctx.performed) { Debug.Log("second shoot"); }
+    }
 
+    public void GetReloadInput(InputAction.CallbackContext ctx){
+        if (ctx.started){
+            ScWeapon weapon = currentWeaponScript.ActualWeapon();
+            if (weapon){
+                weapon.Reload();
+            }
+        }
+    }
 }

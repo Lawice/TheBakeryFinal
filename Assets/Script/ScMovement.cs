@@ -6,11 +6,11 @@ public class ScMovement : MonoBehaviour {
     public Transform orientation;
     Rigidbody body;
 
-    [Header("~~~~Movement~~~~")]
+    [Header("~~~~ Movement ~~~~")]
     [SerializeField] private float speed;
     Vector3 moveDir;
 
-    [Header("~~~~GroundCheck~~~~")]
+    [Header("~~~~ GroundCheck ~~~~")]
     public float height;
     [SerializeField] bool grounded;
     public LayerMask Ground;
@@ -18,7 +18,7 @@ public class ScMovement : MonoBehaviour {
     public LayerMask Buildings;
     [SerializeField] float groundDrag;
 
-    [Header("~~~~Jumping~~~~")]
+    [Header("~~~~ Jumping ~~~~")]
     [SerializeField] private float jumpForce;
     [SerializeField] private bool canJump;
     [SerializeField] private int nbJump=3;
