@@ -51,6 +51,12 @@ public class ScGetInput : MonoBehaviour{
                 Debug.Log("No weapon found.");
             }
         }
+        else if (ctx.canceled){
+            ScWeapon weapon = currentWeaponScript.ActualWeapon();
+            if (weapon){
+                weapon.CancelAutoShoot();
+            }
+        }
     }
 
     public void GetSecondaryShootInput(InputAction.CallbackContext ctx){

@@ -16,8 +16,10 @@ public class ScCurrentWeapon : MonoBehaviour{
     [SerializeField] private Weapons currentWeapon = Weapons._hand;
 
     [Header("~~~~ Visual ~~~~")]
-    public GameObject muzzleFlash;
     public TextMeshProUGUI munitionDisplay;
+    public TextMeshProUGUI weaponDisplay;
+    public TextMeshProUGUI scoreDisplay;
+    public int score;
     [SerializeField] private int ballsLeft, magazine, ballsPerTaps; 
 
     void Start() {
@@ -30,12 +32,19 @@ public class ScCurrentWeapon : MonoBehaviour{
         if (munitionDisplay != null) {
             munitionDisplay.SetText(ballsLeft / ballsPerTaps + " / " + magazine / ballsPerTaps);
         }
+
+        if (scoreDisplay != null) {
+            scoreDisplay.SetText("Score :" + score);
+        }
     }
 
     public ScWeapon ActualWeapon(){
         for (int u = 0; u< transform.childCount; u++) { 
             var weapon = transform.GetChild(u);
-            if (weapon == baguette) { currentWeapon = Weapons._baguette; }
+            if (weapon == baguette) { weaponDisplay.SetText("La Baguette"); }
+            if (weapon == breadstick) { weaponDisplay.SetText("Le Pain"); }
+            if (weapon == twistedbread) { weaponDisplay.SetText("Le Pain Sprirale"); }
+            if (weapon == rye)  { weaponDisplay.SetText("Le Crouton"); }
             if (weapon.gameObject.activeSelf && weapon.TryGetComponent<ScWeapon>(out ScWeapon weaponComponent)){
                 ballsLeft = weaponComponent.bulletsLeft;
                 ballsPerTaps = weaponComponent.bulletsShooting;

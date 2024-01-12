@@ -37,16 +37,18 @@ public class ScWeapon : MonoBehaviour {
     public virtual void Statut() {
         switch (gunStatut) {
             case GunStatut.canShoot:
-                if (bulletsLeft > 0) {
+                if (bulletsLeft > 0) { 
                     bulletsShot = 0;
-                    Shoot();
+                    if (canHold) { InvokeRepeating("AutoShoot", 0f, shootingTime); }
+                    else { Shoot(); }
                 }
                 else { Reload(); }
                 break;
             case GunStatut.shooting:
                 if (bulletsShot > 0) {
                     bulletsShot = 0;
-                    Shoot();
+                    if (canHold) { InvokeRepeating("AutoShoot", 0f, shootingTime); }
+                    else { Shoot(); }
                 }
                 else {Reload(); }
                 break;
@@ -103,5 +105,11 @@ public class ScWeapon : MonoBehaviour {
         animator.SetBool("Reloading", false);
     }
 
+    private void AutoShoot(){
+        if (gunStatut == GunStatut.canShoot || gunStatut == GunStatut.shooting){Shoot(); }
+        else{CancelInvoke("AutoShoot");}
+    }
+
+  public void CancelAutoShoot(){CancelInvoke("AutoShoot"); }
 
 }
