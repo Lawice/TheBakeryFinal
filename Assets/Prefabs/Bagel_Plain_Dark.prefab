@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7871891879746874809}
   - component: {fileID: 4086703543901857634}
   - component: {fileID: 3521462194941406368}
+  - component: {fileID: 7074220021426823599}
   m_Layer: 0
   m_Name: Bagel_Plain_Dark
   m_TagString: Untagged
@@ -134,3 +135,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &7074220021426823599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8555071198885059555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74509d41afdd6dd45b4c01d6d8e958d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

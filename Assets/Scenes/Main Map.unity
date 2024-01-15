@@ -2113,6 +2113,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 14fb82aa-77ea-45b6-a63f-258f798c7b17
     m_ActionName: InGame/Reloading[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1172579050}
+        m_TargetAssemblyTypeName: ScGetInput, Assembly-CSharp
+        m_MethodName: GetSwitchInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 84bfb70e-3ef7-4152-9695-c94b8446245d
+    m_ActionName: InGame/Scroll[/Mouse/delta/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -3816,10 +3832,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799e6111f0ed9fb40add21dff38796f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baguette: {fileID: 1346378726}
-  breadstick: {fileID: 680577348}
-  twistedbread: {fileID: 168527941}
-  rye: {fileID: 1728390517}
+  transBaguette: {fileID: 1346378726}
+  transBreadstick: {fileID: 680577348}
+  transTwistedbread: {fileID: 168527941}
+  transRye: {fileID: 1728390517}
   currentWeapon: 0
   munitionDisplay: {fileID: 1895178660}
   weaponDisplay: {fileID: 2032829915}
@@ -4447,7 +4463,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: Hand
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9f5272d2e6bcf14d858601c7f2d342e, type: 2}
   m_sharedMaterial: {fileID: -9130793201103981490, guid: a9f5272d2e6bcf14d858601c7f2d342e, type: 2}

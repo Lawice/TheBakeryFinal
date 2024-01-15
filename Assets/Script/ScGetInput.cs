@@ -13,9 +13,6 @@ public class ScGetInput : MonoBehaviour{
     private Vector2 moveDirection;
     ScWeapon weapon;
 
-
-
-
     private void Awake(){
         viewScript = GetComponent<ScView>();
         playerInput = GetComponent<PlayerInput>();
@@ -71,4 +68,17 @@ public class ScGetInput : MonoBehaviour{
             }
         }
     }
+    
+    public void GetSwitchInput(InputAction.CallbackContext ctx){
+        float scroll_amount = ctx.ReadValue<float>();
+        int scrolling = 0;
+        if (scroll_amount > 0) {
+            scrolling = 1;
+            currentWeaponScript.ScrollWeapon(scrolling);
+        } else if (scroll_amount < 0) {
+            scrolling = -1;
+            currentWeaponScript.ScrollWeapon(scrolling);
+        }
+    }
+
 }
