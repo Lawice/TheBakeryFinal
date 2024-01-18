@@ -74,9 +74,11 @@ public class ScGetInput : MonoBehaviour{
         int scrolling = 0;
         if (scroll_amount > 0) {
             scrolling = 1;
+            Debug.Log("OOOOOOO");
             currentWeaponScript.ScrollWeapon(scrolling);
         } else if (scroll_amount < 0) {
             scrolling = -1;
+            Debug.Log("BAAAAAS");
             currentWeaponScript.ScrollWeapon(scrolling);
         }
     }

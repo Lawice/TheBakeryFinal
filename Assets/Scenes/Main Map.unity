@@ -2617,7 +2617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1649733877502312762, guid: b9f859e1edb16ee4ebebb5c95ff9a6f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.39
       objectReference: {fileID: 0}
     - target: {fileID: 1649733877502312762, guid: b9f859e1edb16ee4ebebb5c95ff9a6f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3833,9 +3833,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transBaguette: {fileID: 1346378726}
+  baguette: {fileID: 1346378725}
   transBreadstick: {fileID: 680577348}
+  breadstick: {fileID: 680577347}
   transTwistedbread: {fileID: 168527941}
+  twistedbread: {fileID: 168527940}
   transRye: {fileID: 1728390517}
+  rye: {fileID: 897784356}
   currentWeapon: 0
   munitionDisplay: {fileID: 1895178660}
   weaponDisplay: {fileID: 2032829915}
