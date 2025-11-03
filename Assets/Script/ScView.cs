@@ -9,8 +9,8 @@ public class ScView : MonoBehaviour{
     [SerializeField] private float ySensy;
     [SerializeField] float zRota;
 
-    private float yRota = 0;
-    private float xRota = 0;
+    float _xRota;
+    float _yRota;
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
@@ -18,11 +18,11 @@ public class ScView : MonoBehaviour{
     }
 
     public void LookAround(Vector2 mouseMove) {
-        yRota += mouseMove.x * Time.deltaTime * xSensy;
-        xRota -= mouseMove.y * Time.deltaTime * ySensy;
-        xRota = Mathf.Clamp(xRota, -90, 90);
+        _yRota += mouseMove.x * Time.deltaTime * xSensy;
+        _xRota -= mouseMove.y * Time.deltaTime * ySensy;
+        _xRota = Mathf.Clamp(_xRota, -90, 90);
 
-        camView.rotation = Quaternion.Euler(xRota, yRota, zRota);
+        camView.rotation = Quaternion.Euler(_xRota, _yRota, zRota);
     }
 
 }

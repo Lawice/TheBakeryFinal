@@ -8,7 +8,7 @@ public class ScGetInput : MonoBehaviour{
     private PlayerInput playerInput;
 
     private void Start(){
-        viewScript = GetComponent<ScView>();
+            viewScript = GetComponent<ScView>();
         playerInput = GetComponent<PlayerInput>();
     }
 
